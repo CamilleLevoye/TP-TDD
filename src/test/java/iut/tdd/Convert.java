@@ -35,23 +35,35 @@ public class Convert {
 
 		if (Integer.parseInt(input) <= 16) {
 			result = map.get(input);
-		} else if (input.charAt(1) == '0') {
+		} 
+		else if (input.charAt(1) == '0') {
 			result = map.get(input);
-		} else if (input.charAt(1) == '1') {
-			if (2 <= Integer.parseInt(input.charAt(0)+"") || Integer.parseInt(input.charAt(0)+"") <= 6) {
+		} 
+		else if (input.charAt(1) == '1') {
+			
+			if(input.charAt(0) == '7' || input.charAt(0) == '9'){
+				String dizaine = getDizaine(Integer.parseInt(input));
+				String unite = getUnite(Integer.parseInt(input));
+				result = map.get(dizaine) + "-et-"+map.get(unite);
+			}
+			
+			else if(input.charAt(0) == '8'){
 				String tmp = getDizaine(Integer.parseInt(input));
-				result = map.get(tmp) + "-et-un";
+				result = map.get(tmp) + "-un";
 			}
-			else if(Integer.parseInt(input.charAt(0)+"")==7){
-				String tmp = input.charAt(0) + "0";
-				result = map.get(tmp) + "-et-onze";
+			
+			else {
+				String tmp = getDizaine(Integer.parseInt(input));
+				String unite = getUnite(Integer.parseInt(input));
+				result = map.get(tmp) + "-et-" + map.get(unite);
 			}
-			else{
-				
-			}
-		} else {
-			String dizaine = input.charAt(0) + "0";
-			String unite = input.charAt(1) + "";
+			
+
+			
+		} 
+		else {
+			String dizaine = getDizaine(Integer.parseInt(input));
+			String unite = getUnite(Integer.parseInt(input));
 			result = map.get(dizaine) + "-" + map.get(unite);
 		}
 
@@ -60,9 +72,21 @@ public class Convert {
 	}
 	
 	public static String getDizaine(int input){
-		int dizaine = input/10;
-		return null;
+		int dizaine = (input/10)*10;
+		if(dizaine==70 || dizaine==90){
+			dizaine=dizaine-10;
+		}
+		return Integer.toString(dizaine);	
+	}
+	
+	public static String getUnite(int input){
+		int dizaine = (input/10)*10;
+		int unite = input-(input/10)*10;
 		
+		if(dizaine==70 || dizaine==90){
+			unite=unite+10;
+		}
+		return Integer.toString(unite);	
 	}
 
 	public static String text2num(String input) {

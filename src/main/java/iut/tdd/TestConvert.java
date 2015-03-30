@@ -124,7 +124,7 @@ public class TestConvert {
 	@Test
 	public void test_num2text_vingt_et_un() {
 		Convert myConvert = new Convert();
-		Assert.assertEquals("vingt et un", myConvert.num2text("21"));
+		Assert.assertEquals("vingt-et-un", myConvert.num2text("21"));
 	}
 	
 	@Test
@@ -136,7 +136,25 @@ public class TestConvert {
 	@Test
 	public void test_num2text_31() {
 		Convert myConvert = new Convert();
-		Assert.assertEquals("trente et un", myConvert.num2text("31"));
+		Assert.assertEquals("trente-et-un", myConvert.num2text("31"));
+	}
+	
+	@Test
+	public void test_num2text_32() {
+		Convert myConvert = new Convert();
+		Assert.assertEquals("trente-deux", myConvert.num2text("32"));
+	}
+	
+	@Test
+	public void test_num2text_71() {
+		Convert myConvert = new Convert();
+		Assert.assertEquals("soixante-et-onze", myConvert.num2text("71"));
+	}
+	
+	@Test
+	public void test_num2text_76() {
+		Convert myConvert = new Convert();
+		Assert.assertEquals("soixante-seize", myConvert.num2text("76"));
 	}
 	
 	@Test
